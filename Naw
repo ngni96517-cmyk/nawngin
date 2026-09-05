@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>NAO Shop Game - Top Up Games</title>
+<!-- Google Font: Montserrat & Kanit -->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg-color: #0d0d0d;
+      --card-bg: #141414;
+      --primary-red: #e50914;
+      --primary-red-hover: #ff1e27;
+      --text-color: #ffffff;
+      --border-color: #262626;
+      --card-border-hover: rgba(229, 9, 20, 0.6);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Kanit', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: env(safe-area-inset-bottom, 32px);
+    }
+    /* Top Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background-color: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    /* โลโก้ตัว N */
+    .logo-n {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #220000 0%, #b30000 100%);
+      border: 1.5px solid var(--primary-red);
+      border-radius: 9px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 30, 39, 0.9);
+      box-shadow: 0 0 14px rgba(229, 9, 20, 0.45);
+      flex-shrink: 0;
+    }
+    .brand-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+    .menu-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-size: 22px;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .menu-button:active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--primary-red);
+    }
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 820px;
+      margin: 16px auto 0;
+      padding: 0 14px;
+    }
+    /* Section Header */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 0 2px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 16px;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .section-title .icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+    .view-all {
+      color: var(--primary-red);
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.2px;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: color 0.2s, background-color 0.2s;
+    }
+    .view-all:active {
+      color: var(--primary-red-hover);
+      background-color: rgba(229, 9, 20, 0.12);
+    }
+    /* Game Grid */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    /* Game Card */
+    .game-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .game-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-2px);
+    }
+    .game-card:active {
+      transform: scale(0.985);
+    }
+    /* Game Image Box */
+    .img-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: #000;
+    }
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Mini N Logo on Card Image */
+    .mini-logo {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 0, 0, 0.82);
+      border: 1px solid var(--primary-red);
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 0 6px rgba(229, 9, 20, 0.5);
+    }
+    .game-name {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      padding: 0 2px;
+      color: #f1f1f1;
+    }
+    /* Top Up Button */
+    .btn-topup {
+      width: 100%;
+      background-color: var(--primary-red);
+      color: #ffffff;
+      border: none;
+      padding: 7px 0;
+      min-height: 34px;
+      border-radius: 18px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+      box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
+    }
+    .btn-topup:hover {
+      background-color: var(--primary-red-hover);
+      box-shadow: 0 0 12px rgba(229, 9, 20, 0.7);
+    }
+    .btn-topup:active {
+      transform: scale(0.96);
+      background-color: var(--primary-red-hover);
+      box-shadow: 0 0 4px rgba(229, 9, 20, 0.8);
+    }
+
+    /* Media query adjustments for desktop/tablets */
+    @media (min-width: 601px) {
+      .navbar {
+        padding: 15px 24px;
+      }
+      .logo-n {
+        width: 44px;
+        height: 44px;
+        font-size: 26px;
+        border-radius: 10px;
+      }
+      .brand-title {
+        font-size: 18px;
+      }
+      .container {
+        margin: 24px auto 0;
+        padding: 0 20px;
+      }
+      .section-header {
+        margin-bottom: 20px;
+      }
+      .section-title {
+        font-size: 18px;
+      }
+      .view-all {
+        font-size: 14px;
+      }
+      .game-grid {
+        gap: 16px;
+      }
+      .game-card {
+        padding: 12px;
+        border-radius: 16px;
+      }
+      .img-wrapper {
+        margin-bottom: 12px;
+        border-radius: 12px;
+      }
+      .mini-logo {
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+        top: 8px;
+        left: 8px;
+      }
+      .game-name {
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+      .btn-topup {
+        padding: 9px 0;
+        min-height: 38px;
+        font-size: 13px;
+        border-radius: 20px;
+      }
+    }
+
+    /* Small phone screen refinement */
+    @media (max-width: 360px) {
+      .game-grid {
+        gap: 6px;
+      }
+      .game-card {
+        padding: 6px;
+        border-radius: 12px;
+      }
+      .game-name {
+        font-size: 11px;
+      }
+      .btn-topup {
+        font-size: 11px;
+        min-height: 30px;
+        padding: 5px 0;
+      }
+      .brand-title {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Header / Navbar -->
+<nav class="navbar">
+<div class="brand">
+<div class="logo-n">N</div>
+<div class="brand-title">NAO Shop Game</div>
+</div>
+<button aria-label="Menu" class="menu-button" type="button">☰</button>
+</nav>
+<!-- Content Area -->
+<main class="container">
+<div class="section-header">
+<div class="section-title">
+<span class="icon">🎮</span> TOP UP GAMES
+</div>
+<a class="view-all" href="#">View All &gt;</a>
+</div>
+<!-- 3 Game Cards Grid -->
+<div class="game-grid">
+<!-- Free Fire -->
+<div class="game-card">
+<div class="img-wrapper">
+<div class="mini-logo">N</div>
+<img alt="Free Fire" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm82632nHPv1agbbN49Ml34b0pjtdcMIgIiNW4lxc2R4qjk3plB11QyJIySpX6UG2z4TD-t7pq0S5VSzNaCVt2i0BQDxWP7Tz1_j44b0OvI4OkQI0hODnHfecwlSuOha_9MHBd-MXACw96UFu4GgJ7BvgUGvx3-LZXgT9UR-moDrOlitrDyEYWdIK5KjcT6pmZL150XkRpKEPY5_ipBEQxgq6JnFRd1NYSD2azmIRnsvSijuHJ4vwxpg"/>
+</div>
+<div class="game-name">Free Fire</div>
+<a class="btn-topup" href="#">Top Up</a>
+</div>
+<!-- PUBG Mobile -->
+<div class="game-card">
+<div class="img-wrapper">
+<div class="mini-logo">N</div>
+<img alt="PUBG Mobile" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4niremKcnfk6UPNwhvIhZl0QrQGwcHZjwFxx_Xi4pBFo5XAZBAD_e3uqRJNUHHv8xEr6XKPiNR_TKZ0gr7uvBEiUYrQM9S4gbMi_7WpfhdTdRnXe4Xi6TFSlvXBivkeWmTkpL_5GKY-d9RDpRiuftPyYT4OdmwU-0saDBZf_WoDEH4Se54BM0YqOL1AVPGwI6MtgLFtHwihCT7GWnXalnXM8_ndOg2ej6MckoZJad2CouPw8Xq9WvJQ"/>
+</div>
+<div class="game-name">PUBG Mobile</div>
+<a class="btn-topup" href="#">Top Up</a>
+</div>
+<!-- Mobile Legends -->
+<div class="game-card">
+<div class="img-wrapper">
+<div class="mini-logo">N</div>
+<img alt="Mobile Legends" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbhPGAP8MxrH-mGIqxmDfJnoINUGFH4rTqa-eRudSkZKYd_kdZug2JZMMrNx9DTVYxagrVU8H0NiE3y7mfu_FEIYJDVnejNakrpnYAa1iKwh_xOqF85ozKxf-vYtxmgCVlHbpGBsr394EfGf-LtC_b8lsywP01lcTgpdWcQ1zLpQR5DydJy4ASRPakoiqCsd6BE19ANkqGKNR4XDI0N_oRszV-OtAqoHMFukumzN3-iTVkhLoVuqemzw"/>
+</div>
+<div class="game-name">Mobile Legends</div>
+<a class="btn-topup" href="#">Top Up</a>
+</div>
+</div>
+</main>
+</body></html>
