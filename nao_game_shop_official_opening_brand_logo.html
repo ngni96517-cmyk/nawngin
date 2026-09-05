@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#2a060a"/>
+      <stop offset="60%" stop-color="#110305"/>
+      <stop offset="100%" stop-color="#08090c"/>
+    </radialGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#ff1a35" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#e50914" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#e50914" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Shield / Chrome Gradients -->
+    <linearGradient id="shieldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff3b4e"/>
+      <stop offset="40%" stop-color="#e50914"/>
+      <stop offset="70%" stop-color="#6e0009"/>
+      <stop offset="100%" stop-color="#ff2a3f"/>
+    </linearGradient>
+
+    <linearGradient id="shieldFill" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#1a0b10"/>
+      <stop offset="50%" stop-color="#10080c"/>
+      <stop offset="100%" stop-color="#090508"/>
+    </linearGradient>
+
+    <!-- Letter N Metallic & Fiery Gradients -->
+    <linearGradient id="nLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#ff6b7a"/>
+      <stop offset="100%" stop-color="#e50914"/>
+    </linearGradient>
+    
+    <linearGradient id="nSlash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#ff2a3f"/>
+      <stop offset="100%" stop-color="#99000a"/>
+    </linearGradient>
+
+    <linearGradient id="nRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4d5e"/>
+      <stop offset="60%" stop-color="#d90412"/>
+      <stop offset="100%" stop-color="#660007"/>
+    </linearGradient>
+
+    <!-- Text Gradients -->
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#f3f4f6"/>
+      <stop offset="100%" stop-color="#ff3344"/>
+    </linearGradient>
+
+    <!-- Filters for Intense Glow -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="18" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="subtleGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="500" height="500" rx="32" fill="url(#bgGlow)"/>
+  
+  <!-- Cyber Grid / Decorative Lines -->
+  <circle cx="250" cy="200" r="160" fill="none" stroke="#e50914" stroke-opacity="0.08" stroke-dasharray="6 6"/>
+  <circle cx="250" cy="200" r="190" fill="none" stroke="#e50914" stroke-opacity="0.04" stroke-width="2"/>
+  <circle cx="250" cy="200" r="110" fill="url(#coreGlow)"/>
+
+  <!-- Geometric Accent Brackets / Cyber Target Marks -->
+  <path d="M 90 70 L 60 70 L 60 100" fill="none" stroke="#ff2a3f" stroke-width="2.5" stroke-opacity="0.4"/>
+  <path d="M 410 70 L 440 70 L 440 100" fill="none" stroke="#ff2a3f" stroke-width="2.5" stroke-opacity="0.4"/>
+  <path d="M 90 430 L 60 430 L 60 400" fill="none" stroke="#ff2a3f" stroke-width="2.5" stroke-opacity="0.4"/>
+  <path d="M 410 430 L 440 430 L 440 400" fill="none" stroke="#ff2a3f" stroke-width="2.5" stroke-opacity="0.4"/>
+
+  <!-- Ambient Light Streak behind badge -->
+  <path d="M 120 200 L 380 200" stroke="#ff1a35" stroke-opacity="0.25" stroke-width="4" filter="url(#neonGlow)"/>
+
+  <!-- Esports Shield Outer Frame -->
+  <polygon points="250,55 355,105 355,225 250,320 145,225 145,105" 
+           fill="none" stroke="url(#shieldBorder)" stroke-width="5" filter="url(#subtleGlow)"/>
+
+  <!-- Esports Shield Body -->
+  <polygon points="250,65 345,110 345,220 250,308 155,220 155,110" 
+           fill="url(#shieldFill)" stroke="#2d0b13" stroke-width="2"/>
+
+  <!-- Inner Cyber Wings / Shards -->
+  <polygon points="165,120 205,120 180,210 165,195" fill="#e50914" fill-opacity="0.15"/>
+  <polygon points="335,120 295,120 320,210 335,195" fill="#e50914" fill-opacity="0.15"/>
+
+  <!-- Crest Top Gem Accent -->
+  <polygon points="250,75 260,90 250,100 240,90" fill="#ff3344" filter="url(#subtleGlow)"/>
+
+  <!-- THE ICONIC "N" EMBLEM (Geometric Cyber Gamer Monogram) -->
+  <g filter="url(#neonGlow)">
+    <!-- Left Pillar of N -->
+    <polygon points="182,125 214,125 214,260 182,242" fill="url(#nLeft)"/>
+    
+    <!-- Diagonal Slash of N -->
+    <polygon points="208,125 242,125 318,255 284,255" fill="url(#nSlash)"/>
+    
+    <!-- Right Pillar of N -->
+    <polygon points="286,138 318,125 318,260 286,260" fill="url(#nRight)"/>
+
+    <!-- High-tech Facet / Light Reflections on N -->
+    <polygon points="182,125 198,125 198,250 182,242" fill="#ffffff" fill-opacity="0.25"/>
+    <polygon points="208,125 224,125 300,255 284,255" fill="#ffffff" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Crown / Top Diamond Sparkle -->
+  <circle cx="250" cy="88" r="2.5" fill="#ffffff"/>
+
+  <!-- BRAND TYPOGRAPHY -->
+  <g text-anchor="middle">
+    <!-- "NAO" Big Bold Esports Heading -->
+    <text x="250" y="375" 
+          font-family="'Montserrat', 'Arial Black', sans-serif" 
+          font-size="44" 
+          font-weight="900" 
+          letter-spacing="6" 
+          fill="url(#goldText)" 
+          filter="url(#subtleGlow)">
+      NAO
+    </text>
+
+    <!-- "GAME SHOP" Neon Accent Subheading -->
+    <text x="250" y="405" 
+          font-family="'Montserrat', 'Kanit', sans-serif" 
+          font-size="16" 
+          font-weight="800" 
+          letter-spacing="8" 
+          fill="#ff2a3f">
+      GAME SHOP
+    </text>
+
+    <!-- Cyber Divider Line -->
+    <line x1="160" y1="422" x2="340" y2="422" stroke="#ff1a35" stroke-opacity="0.4" stroke-width="1.5"/>
+    <polygon points="250,420 254,422 250,424 246,422" fill="#ff3b4e"/>
+
+    <!-- Tagline / Slogan -->
+    <text x="250" y="442" 
+          font-family="'Kanit', sans-serif" 
+          font-size="11" 
+          font-weight="600" 
+          letter-spacing="3" 
+          fill="#94a3b8">
+      TOP UP • 24/7 AUTOMATED • FAST
+    </text>
+  </g>
+</svg>
